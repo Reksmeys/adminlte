@@ -8,8 +8,8 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/adminlte.min.css">
-   <script src="https://code.jquery.com/jquery-3.3.1.js"></script> 
-   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="../css/dataTables.bootstrap4.min.css">
+  
 
 </head>
 
@@ -533,12 +533,9 @@
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>
-            <!-- /.sidebar -->
+           
         </aside>
-
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -556,10 +553,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.container-fluid -->
+    
             </section>
 
-            <!-- Main content -->
+
             <section class="content">
                 <div class="row">
                     <div class="col-12">
@@ -567,19 +564,18 @@
                             <div class="card-header">
                                 <h3 class="card-title">Hover Data Table</h3>
                             </div>
-                            <!-- /.card-header -->
+                 
                             <div class="card-body">
 
                             </div>
-                            <!-- /.card-body -->
+                         
                         </div>
-                        <!-- /.card -->
-
+                      
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Data Table With Full Features</h3>
                             </div>
-                            <!-- /.card-header -->
+                  
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
@@ -588,19 +584,10 @@
                                             <th>Browser</th>
                                             <th>Platform(s)</th>
                                             <th>Engine version</th>
-                                            <th>CSS grade</th>
+                                         
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                      
-                                        <tr>
-                                            <th>Rendering engine</th>
-                                            <th>Browser</th>
-                                            <th>Platform(s)</th>
-                                            <th>Engine version</th>
-                                            <th>CSS grade</th>
-                                        </tr>
-                                    </tbody>
+                               
                                     <tfoot>
                                         <tr>
                                             <th>Rendering engine</th>
@@ -612,20 +599,14 @@
                                     </tfoot>
                                 </table>
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
-                    </div>
-                    <!-- /.col -->
+                    </div>    
                 </div>
-                <!-- /.row -->
             </section>
-            <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
-                <b>Version</b> 3.0.0-beta.1
+                <b>Version</b>
             </div>
             <strong>Copyright &copy; 2014-2018
                 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
@@ -643,28 +624,29 @@
     <script src="../js/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../js/bootstrap.bundle.min.js"></script>
-    <!-- DataTables -->
     <script src="../js/jquery.dataTables.js"></script>
-
+    <script src="../js/dataTables.bootstrap4.js"></script>
     <!-- AdminLTE App -->
     <script src="../js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="../js/demo.js"></script>
+   
     <!-- <script src="../js/script/crud.js"></script> -->
     <!-- page script -->
     <script>
       $(document).ready(function() {
-    $('#example1').DataTable( {
-        "ajax": "article.json",
-        "columns": [
-            { "data": "name[, ]" },
-            { "data": "hr.0" },
-            { "data": "office" },
-            { "data": "extn" },
-            { "data": "hr.2" },
-            { "data": "hr.1" }
-        ]
-    } );
+        $('#example1').DataTable( {
+            "ajax": {
+                "url":"http://api-ams.me/v1/api/articles?page=1&limit=15",
+                "dataSrc": "DATA"
+            },
+            "columns": [
+                { "data": "TITLE" },
+                { "data": "DESCRIPTION" },
+                { "data": "CREATED_DATE" },
+                { "data": "AUTHOR.NAME" }
+
+            ]
+        } );
 } );
 
         function showDataToTable(article) {
